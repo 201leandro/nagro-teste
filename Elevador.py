@@ -1,18 +1,24 @@
 
 """
-todo: docstring rsrs
+Projeto: Teste Nagro
+Tarefa: Teste Nagro
+Fonte: Elevador.py
+Autor: Leandro Oliveira
+Data: 20/09/2017
+Empresa: Nagro
+Obs: Ultima alteracao - Leandro Oliveira - 21/09/2017
 """
 
 class Elevador:
 
     """
-    todo: docstring
+    Classe utilizada para simulacao de rotinas de um elevador social.
     """
 
     def __init__(self):
 
         """
-        todo: docstring
+        Metodo construtor. Nenhum parametro requirido.
         """
 
         self.andar_atual = 0
@@ -30,7 +36,8 @@ class Elevador:
     def atualiza_status(self):
 
         """
-        todo: docstring
+        Metodo que exibe na tela o status atual do objeto Elevador.
+        Nenhum atributo modificado.
         """
 
         print("\n==================================================")
@@ -47,7 +54,8 @@ class Elevador:
     def seguir(self):
 
         """
-        todo: docstring
+        Metodo que trata a movimentacao do objeto Elevador.
+        Sao modificados os atributos andar_atual, rota, status, porta.
         """
 
         if not self.rota:
@@ -104,7 +112,8 @@ class Elevador:
     def solicitar(self, andar, direcao):
 
         """
-        todo: docstring
+        Metodo que trata novas solicitacoes de parada do objeto Elevador.
+        Sao modificados os atributos direcao, rota.
         """
 
         if andar < 0 or andar > 10:
@@ -125,7 +134,8 @@ class Elevador:
     def atualiza_rota(self, andar):
 
         """
-        todo: docstring
+        Metodo que atualiza a rota do objeto Elevador.
+        Sao modificados os atributos direcao, rota.
         """
 
         if andar < 0 or andar > 10:
@@ -166,7 +176,8 @@ class Elevador:
     def embarcar(self, numPessoas):
 
         """
-        todo: docstring
+        Metodo que permite a inclusao de passageiros no objeto Elevador.
+        Modificado o atributo passageiros.
         """
         
         if self.passageiros + numPessoas > self.limite:
@@ -178,7 +189,8 @@ class Elevador:
     def desembarcar(self, numPessoas):
 
         """
-        todo: docstring
+        Metodo que permite a exclusao de passageiros no objeto Elevador.
+        Modificado o atributo passageiros.
         """
 
         if self.passageiros - numPessoas < 0:
