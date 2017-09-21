@@ -5,7 +5,7 @@ Fonte: Elevador.py
 Autor: Leandro Oliveira
 Data: 20/09/2017
 Empresa: Nagro
-Obs: Funcao principal para simulacao das rotinas de um elevador social.
+Obs: Funcao principal para simulacao das rotinas de um elevador social
      Ultima alteracao - Leandro Oliveira - 21/09/2017
 """
 
