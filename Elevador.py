@@ -50,6 +50,10 @@ class Elevador:
         todo: docstring
         """
 
+        if not self.rota:
+            print("Nenhuma rota definida.")
+            return
+            
         if self.rota:
 
             if self.andar_atual < self.rota[0]:
@@ -64,10 +68,10 @@ class Elevador:
 
                     if self.andar_atual in self.rota:
                         self.rota.remove(self.andar_atual)
+                        self.atualiza_status()
                         self.status = "parado"
                         self.porta = "aberta"
-                        self.atualiza_status()
-        
+
         if self.rota:
 
             if self.andar_atual > self.rota[0]:
@@ -82,9 +86,19 @@ class Elevador:
 
                     if self.andar_atual in self.rota:
                         self.rota.remove(self.andar_atual)
+                        self.atualiza_status()
                         self.status = "parado"
                         self.porta = "aberta"
-                        self.atualiza_status()
+
+        if self.rota:
+
+            if self.andar_atual == self.rota[0]:
+
+                if self.andar_atual in self.rota:
+                    self.rota.remove(self.andar_atual)
+                    self.atualiza_status()
+                    self.status = "parado"
+                    self.porta = "aberta"
 
 
     def solicitar(self, andar, direcao):
