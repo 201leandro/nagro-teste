@@ -93,13 +93,16 @@ class Elevador:
         todo: docstring
         """
 
+        if andar < 0 or andar > 10:
+            raise Exception("Andar " + str(andar) + " nao existe.")
+
         if direcao == "subir":
             direcao = "cima"
 
         if direcao == "descer":
             direcao = "baixo"
 
-        if not self.rota:
+        if not self.rota or self.direcao == "nenhuma":
             self.direcao = direcao
 
         self.atualiza_rota(andar)
@@ -110,6 +113,9 @@ class Elevador:
         """
         todo: docstring
         """
+
+        if andar < 0 or andar > 10:
+            raise Exception("Andar " +  str(andar) + " nao existe.")
 
         rota1 = []
         rota2 = []
@@ -144,8 +150,24 @@ class Elevador:
 
 
     def embarcar(self, numPessoas):
+
+        """
+        todo: docstring
+        """
         
         if self.passageiros + numPessoas > self.limite:
             print("Numero de passageiros superior a capacidade maxima.")
         else:
             self.passageiros += numPessoas
+
+
+    def desembarcar(self, numPessoas):
+
+        """
+        todo: docstring
+        """
+
+        if self.passageiros - numPessoas < 0:
+            raise Exception('Numero de passageiros invalido (negativo).')
+        else:
+            self.passageiros -= numPessoas
