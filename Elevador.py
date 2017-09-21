@@ -76,9 +76,9 @@ class Elevador:
 
                     if self.andar_atual in self.rota:
                         self.rota.remove(self.andar_atual)
-                        self.atualiza_status()
                         self.status = "parado"
                         self.porta = "aberta"
+                        self.atualiza_status()
 
         if self.rota:
 
@@ -94,9 +94,9 @@ class Elevador:
 
                     if self.andar_atual in self.rota:
                         self.rota.remove(self.andar_atual)
-                        self.atualiza_status()
                         self.status = "parado"
                         self.porta = "aberta"
+                        self.atualiza_status()
 
         if self.rota:
 
@@ -104,9 +104,9 @@ class Elevador:
 
                 if self.andar_atual in self.rota:
                     self.rota.remove(self.andar_atual)
-                    self.atualiza_status()
                     self.status = "parado"
                     self.porta = "aberta"
+                    self.atualiza_status()
 
 
     def solicitar(self, andar, direcao):
