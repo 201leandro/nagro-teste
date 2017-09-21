@@ -24,6 +24,8 @@ class Elevador:
         self.limite = 10
         self.ativo = True
 
+        self.atualiza_status()
+
 
     def atualiza_status(self):
 
@@ -31,7 +33,7 @@ class Elevador:
         todo: docstring
         """
 
-        print("==================================================")
+        print("\n==================================================")
         print("===================== STATUS =====================")
         print("==================================================")
         print("Andar: " + str(self.andar_atual))
@@ -42,14 +44,47 @@ class Elevador:
         print("Limite: " + str(self.limite))
 
 
-    def seguir(self, direcao):
+    def seguir(self):
 
         """
         todo: docstring
         """
 
-        if direcao == "subir":
-            self.andar_atual += 1
+        if self.rota:
+
+            if self.andar_atual < self.rota[0]:
+
+                for i in range(self.andar_atual, self.rota[0] + 1):
+
+                    self.andar_atual = i
+                    self.status = "subindo"
+                    self.porta = "fechada"
+
+                    self.atualiza_status()
+
+                    if self.andar_atual in self.rota:
+                        self.rota.remove(self.andar_atual)
+                        self.status = "parado"
+                        self.porta = "aberta"
+                        self.atualiza_status()
+        
+        if self.rota:
+
+            if self.andar_atual > self.rota[0]:
+
+                for i in range(self.andar_atual, self.rota[0], -1):
+
+                    self.andar_atual = i
+                    self.status = "descendo"
+                    self.porta = "fechada"
+
+                    self.atualiza_status()
+
+                    if self.andar_atual in self.rota:
+                        self.rota.remove(self.andar_atual)
+                        self.status = "parado"
+                        self.porta = "aberta"
+                        self.atualiza_status()
 
 
     def solicitar(self, andar, direcao):
@@ -57,12 +92,6 @@ class Elevador:
         """
         todo: docstring
         """
-
-        if direcao == "subir":
-            self.direcao = "cima"
-
-        if direcao == "descer":
-            self.direcao = "baixo"
 
         self.atualiza_rota(andar)
 
@@ -95,11 +124,11 @@ class Elevador:
                 self.direcao = "baixo"
 
         if self.direcao == "cima":
-            rota1 = list(set(sorted(rota1, reverse=True)))
-            rota2 = list(set(sorted(rota2)))
+            rota1 = sorted(list(set(rota1)), reverse=True)
+            rota2 = sorted(list(set(rota2)))
             self.rota = rota2 + rota1
 
         if self.direcao == "baixo":
-            rota1 = list(set(sorted(rota1, reverse=True)))
-            rota2 = list(set(sorted(rota2)))
+            rota1 = sorted(list(set(rota1)), reverse=True)
+            rota2 = sorted(list(set(rota2)))
             self.rota = rota1 + rota2
