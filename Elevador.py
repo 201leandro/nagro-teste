@@ -72,7 +72,7 @@ class Elevador:
 
             if self.andar_atual > self.rota[0]:
 
-                for i in range(self.andar_atual, self.rota[0], -1):
+                for i in range(self.andar_atual, self.rota[0] - 1, -1):
 
                     self.andar_atual = i
                     self.status = "descendo"
@@ -92,6 +92,15 @@ class Elevador:
         """
         todo: docstring
         """
+
+        if direcao == "subir":
+            direcao = "cima"
+
+        if direcao == "descer":
+            direcao = "baixo"
+
+        if not self.rota:
+            self.direcao = direcao
 
         self.atualiza_rota(andar)
 
@@ -132,3 +141,11 @@ class Elevador:
             rota1 = sorted(list(set(rota1)), reverse=True)
             rota2 = sorted(list(set(rota2)))
             self.rota = rota1 + rota2
+
+
+    def embarcar(self, numPessoas):
+        
+        if self.passageiros + numPessoas > self.limite:
+            print("Numero de passageiros superior a capacidade maxima.")
+        else:
+            self.passageiros += numPessoas
